@@ -49,3 +49,14 @@ exports.deleteUserById=async(req,res)=>{
     }
 }
 
+exports.getAllUsers=async(req,res)=>{
+    try{
+        const findUsers=await UserModel.find({});
+        if(findUsers<=0){
+         return res.status(404).json({});   
+        }   
+       res.status(200).json(findUsers);
+    }catch(e){
+        res.status(500).send(e);
+    }
+}
